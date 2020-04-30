@@ -21,11 +21,11 @@ class MatrixSizeError(Exception):
 
 
 class Matrix:
-    def __init__(self, list_of_lists=[], val=1):
+    def __init__(self, list_of_lists: list, val=1):
         self.matrix = deepcopy(list_of_lists)
         self.value = val
 
-    def size(self):
+    def size(self) -> tuple:
         return len(self.matrix), len(self.matrix[0])
 
     def transpose(self):
@@ -35,21 +35,21 @@ class Matrix:
 
     def __add__(self, other):
         if self.size() != other.size():
-            raise MatrixSizeError('some error')
-        addlist = [[x + y for x, y in zip(self.matrix[row], other.matrix[row])] for row in range(len(self.matrix))]
-        return Matrix(addlist)
+            raise MatrixSizeError(f'Matrixes have different sizes - Matrix{self.size()} and Matrix{other.size()}')
+        add_list = [[x + y for x, y in zip(self.matrix[row], other.matrix[row])] for row in range(len(self.matrix))]
+        return Matrix(add_list)
 
     def __mul__(self, other):
         self.matrix = [[num * other.value for num in row] for row in self.matrix]
         return self.matrix
 
     def __str__(self):
-        mystr = ''
+        my_str = ''
         for row in self.matrix:
             for elem in row:
-                mystr += str(elem) + '\t'
-            mystr += '\n'
-        return mystr
+                my_str += str(elem) + '\t'
+            my_str += '\n'
+        return my_str
 
     @classmethod
     def create_transposed(cls, new_matr):
@@ -69,5 +69,4 @@ if __name__ == '__main__':
     assert obj.transpose() == [[1, 4], [2, 5], [3, 6]]
     assert obj.transpose() == [[1, 2, 3], [4, 5, 6]]
     assert obj.create_transposed(new_matrix) == [[10, 13, 16, 19], [11, 14, 17, 20], [12, 15, 18, 21]]
-
 
