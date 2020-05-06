@@ -21,9 +21,8 @@ class MatrixSizeError(Exception):
 
 
 class Matrix:
-    def __init__(self, list_of_lists: list, val=1):
+    def __init__(self, list_of_lists: list):
         self.matrix = deepcopy(list_of_lists)
-        self.value = val
 
     def size(self) -> tuple:
         return len(self.matrix), len(self.matrix[0])
@@ -39,8 +38,8 @@ class Matrix:
         add_list = [[x + y for x, y in zip(self.matrix[row], other.matrix[row])] for row in range(len(self.matrix))]
         return Matrix(add_list)
 
-    def __mul__(self, other):
-        self.matrix = [[num * other.value for num in row] for row in self.matrix]
+    def __mul__(self, scalar):
+        self.matrix = [[num * scalar for num in row] for row in self.matrix]
         return self.matrix
 
     def __str__(self):
@@ -60,6 +59,7 @@ if __name__ == '__main__':
     matrix = [[1, 2, 3], [4, 5, 6]]
     new_matrix = [[10, 11, 12], [13, 14, 15], [16, 17, 18], [19, 20, 21]]
     obj = Matrix(matrix)
+
     another_obj1 = Matrix([[7, 8, 9], [10, 11, 12]])
     another_obj2 = Matrix([[7, 8], [10, 11]])
     assert obj.matrix == [[1, 2, 3], [4, 5, 6]]
@@ -69,4 +69,6 @@ if __name__ == '__main__':
     assert obj.transpose() == [[1, 4], [2, 5], [3, 6]]
     assert obj.transpose() == [[1, 2, 3], [4, 5, 6]]
     assert obj.create_transposed(new_matrix) == [[10, 13, 16, 19], [11, 14, 17, 20], [12, 15, 18, 21]]
+    assert obj * 2 == [[2, 4, 6], [8, 10, 12]]
+
 
