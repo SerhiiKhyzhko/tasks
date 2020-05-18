@@ -7,7 +7,7 @@ class TestMatrix(unittest.TestCase):
         self.matrix = hw.Matrix
 
     def tearDown(self):
-        print('test finished successfully')
+        print('=============================================================================')
 
     def test_size(self):
         self.assertEqual(self.matrix([[1, 2, 3, 4], [1, 2, 3, 4]]).size(), (2, 4), 'Wrong size in test 1')
@@ -15,6 +15,7 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(self.matrix([[1, 2, 3], [1, 2, 3], [1, 2, 3]]).size(), (3, 3), 'Wrong size in test 3')
         self.assertEqual(self.matrix([[1, 2, 3, 4]]).size(), (1, 4), 'Wrong size in test 4')
         self.assertEqual(self.matrix([[1], [2], [3], [4]]).size(), (4, 1), 'Wrong size in test 5')
+        print('size tests finished successfully')
 
     def test_mul(self):
         self.assertEqual(self.matrix([[1, 2, 3, 4], [1, 2, 3, 4]]) * 2, [[2, 4, 6, 8], [2, 4, 6, 8]],
@@ -24,6 +25,7 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(self.matrix([[1, 2, 3], [1, 2, 3]]) * 2, [[2, 4, 6], [2, 4, 6]], 'Wrong multiply in test 3')
         self.assertEqual(self.matrix([[1, 2, 3, 4]]) * 2, [[2, 4, 6, 8]], 'Wrong multiply in test 4')
         self.assertEqual(self.matrix([[1], [2], [3], [4]]) * 2, [[2], [4], [6], [8]], 'Wrong multiply in test 5')
+        print('mul tests finished successfully')
 
     def test_add(self):
         self.assertEqual(self.matrix([[1, 2, 3, 4], [1, 2, 3, 4]]) + self.matrix([[2, 4, 6, 8], [2, 4, 6, 8]]),
@@ -38,6 +40,7 @@ class TestMatrix(unittest.TestCase):
                          'Wrong add in test 5')
         with self.assertRaisesRegex(hw.MatrixSizeError, 'size'):
             self.matrix([[1, 2, 3, 4], [1, 2, 3, 4]]) + self.matrix([[1, 2, 3], [1, 2, 3], [1, 2, 3]])
+        print('add tests finished successfully')
 
     def test_get_counter(self):
         self.assertEqual(self.matrix([[1, 2, 3, 4], [1, 2, 3, 4]]).get_counter(), 8, 'Wrong get_counter in test 1')
@@ -46,6 +49,7 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(self.matrix([[1, 2, 3], [1, 2, 3], [1, 2, 3]]).get_counter(), 9, 'Wrong get_counter in test 3')
         self.assertEqual(self.matrix([[1, 2, 3, 4]]).get_counter(), 4, 'Wrong get_counter in test 4')
         self.assertEqual(self.matrix([[1], [2], [3]]).get_counter(), 3, 'Wrong get_counter in test 5')
+        print('get_counter tests finished successfully')
 
     def test_transpose(self):
         self.assertEqual(self.matrix([[1, 2, 3, 4], [1, 2, 3, 4]]).transpose(), [[1, 1], [2, 2], [3, 3], [4, 4]],
@@ -56,6 +60,7 @@ class TestMatrix(unittest.TestCase):
                          'Wrong transpose in test 3')
         self.assertEqual(self.matrix([[1, 2, 3, 4]]).transpose(), [[1], [2], [3], [4]], 'Wrong transpose in test 4')
         self.assertEqual(self.matrix([[1], [2], [3], [4]]).transpose(), [[1, 2, 3, 4]], 'Wrong transpose in test 5')
+        print('transpose tests finished successfully')
 
 
 if __name__ == '__main__':
