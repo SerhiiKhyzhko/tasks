@@ -57,7 +57,7 @@ class Matrix:
         return my_str
 
     def get_counter(self):
-        return sum(Counter.values(dict(Counter(chain(*self.matrix)))))
+        return Counter(sum(self.matrix, []))
 
     @classmethod
     def create_transposed(cls, new_matrix):
