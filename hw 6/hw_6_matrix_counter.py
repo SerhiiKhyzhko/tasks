@@ -14,7 +14,6 @@
 
 from copy import deepcopy
 from collections import Counter
-from itertools import chain
 
 
 class MatrixSizeError(Exception):
