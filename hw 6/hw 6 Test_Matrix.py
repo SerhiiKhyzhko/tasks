@@ -32,7 +32,7 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(self.matrix(self.matr2) + self.matrix(self.matr2),
                          [[2, 4], [6, 8], [2, 4], [6, 8]], 'Wrong add in test 2')
        
-        with self.assertRaisesRegex(hw.MatrixSizeError, 'size'):
+        with self.assertRaisesRegex(MatrixSizeError, 'size'):
             self.matrix(self.matr1) + self.matrix(self.matr2)
         print('add tests finished successfully')
 
