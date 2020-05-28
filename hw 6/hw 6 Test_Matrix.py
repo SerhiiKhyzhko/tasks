@@ -42,15 +42,6 @@ class TestMatrix(unittest.TestCase):
             self.matrix([[1, 2, 3, 4], [1, 2, 3, 4]]) + self.matrix([[1, 2, 3], [1, 2, 3], [1, 2, 3]])
         print('add tests finished successfully')
 
-    def test_get_counter(self):
-        self.assertEqual(self.matrix([[1, 2, 3, 4], [1, 2, 3, 4]]).get_counter(), 8, 'Wrong get_counter in test 1')
-        self.assertEqual(self.matrix([[1, 2], [3, 4], [1, 2], [3, 4], [1, 2]]).get_counter(), 10,
-                         'Wrong get_counter in test 2')
-        self.assertEqual(self.matrix([[1, 2, 3], [1, 2, 3], [1, 2, 3]]).get_counter(), 9, 'Wrong get_counter in test 3')
-        self.assertEqual(self.matrix([[1, 2, 3, 4]]).get_counter(), 4, 'Wrong get_counter in test 4')
-        self.assertEqual(self.matrix([[1], [2], [3]]).get_counter(), 3, 'Wrong get_counter in test 5')
-        print('get_counter tests finished successfully')
-
     def test_transpose(self):
         self.assertEqual(self.matrix([[1, 2, 3, 4], [1, 2, 3, 4]]).transpose(), [[1, 1], [2, 2], [3, 3], [4, 4]],
                          'Wrong transpose in test 1')
