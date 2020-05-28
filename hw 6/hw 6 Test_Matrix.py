@@ -12,7 +12,7 @@ class TestMatrix(unittest.TestCase):
         self.matr5 = [[1], [2], [3], [4]]
 
     def tearDown(self):
-        print('=============================================================================')
+        pass
 
     def test_size(self):
         self.assertEqual(self.matrix(self.matr1).size(), (2, 4), 'Wrong size in test 1')
